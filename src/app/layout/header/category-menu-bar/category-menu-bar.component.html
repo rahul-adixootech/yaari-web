@@ -7,7 +7,7 @@
             [routerLink]="['/home']">Home</a>
           </li>
           <ng-container *ngFor="let collection of headerCollections">
-          <li (click)="showCategoryDropdown(collection.id)" ()="hideDropDown(collection.id)">
+          <li (mouseup)="showCategoryDropdown(collection.id)" (mouseleave)="hideDropDown(collection.id)">
             <a href="javascript:void(0)" class="nav-link--megamenu">
               {{collection.name}}
               <span class="material-icons nav_links_btm_arrow">expand_more</span>

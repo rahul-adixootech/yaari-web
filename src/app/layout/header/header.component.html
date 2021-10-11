@@ -21,7 +21,7 @@
           id="sign_in_option">
             <a class="dropdown-item my-2 d-inline-block font-16 text-center btn-theme-border anchor" href="javascript:void(0)"
               [routerLink]="['/login']" (click)="isBtnClicked = false" id="sign_in_option">
-              Sign In
+              Sign in
             </a>
             <span class="my-2 d-inline-block text-center w-100 anchor" id="sign_in_option">
               Don't have an account?
@@ -34,6 +34,7 @@
         </div>
       </div>
       <div class="top_profile_main float-left px-3">
+        
         <div class="dropdown top_profile_main_drpdwn top_profile_main_drpdwn_on_login">
           <button class="dropdown-toggle text-left d-flex sign_in_btn" type="button" id="dropdownMenuButton" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false" (click)="userOptions = !userOptions" *ngIf="isUserLoggedIn">
@@ -46,6 +47,7 @@
             </span>
           </button>
           <div class="dropdown-menu before_login" aria-labelledby="dropdownMenuButton" [ngClass]="userOptions ? 'show' : ''">
+            
             <a class="dropdown-item font-400 font-16" href="javaScript:void(0)" [routerLink]="['/app/profile']"
               (click)="userOptions = false" id="sign_in_option">
               Your Profile
@@ -56,7 +58,7 @@
             </a> -->
             <a class="dropdown-item font-400 font-16" href="javaScript:void(0)" id="sign_in_option"
             [routerLink]="['app/contact']" (click)="userOptions = false">
-              Contact Us
+              Contact us
             </a>
             <a class="dropdown-item border-0 font-400 font-16 text-danger" (click)="logout()" href="javaScript:void(0)"
             id="sign_in_option" (click)="userOptions = false">
