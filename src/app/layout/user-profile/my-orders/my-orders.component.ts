@@ -33,4 +33,5 @@ export class MyOrdersComponent implements OnInit {
         this.getUserOrders();
     })
   }
+  p : number = 1;
 }

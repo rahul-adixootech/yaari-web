@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+//import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 
@@ -11,11 +11,12 @@ export class OrderService {
   private apiUrl: string = environment.apiUrl
   constructor(private http: HttpClient) { }
 
-  createOrder(payload) {
-    return this.http.post(this.apiUrl + 'orders', payload).pipe(map(response => {
-      return response;
-    }))
-  }
+  createOrder(pin:any) {
+    let createUrl="https://api.postalpincode.in/pincode/"+pin;
+      return this.http.get(createUrl);
+    }
+  
+
 
   orderCheckout(txnToken,orderNum){
     // Setup log namespace query parameter

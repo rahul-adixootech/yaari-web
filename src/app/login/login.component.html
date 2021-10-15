@@ -38,13 +38,14 @@
               </div>
 
               <div class="form-group col-md-12 mb-4 text-center py-1">
-                <a href="javaScript:void(0)" class="text-dark font-500 font-18">
+                <a href="javaScript:void(0)" [routerLink]="['/forget_password']" class="text-dark font-500 font-18">
                   Forgot your password ?
                 </a>
               </div>
             </div>
             <button type="button" (click)="checkUser()" class="btn btn-theme font-18 w-100 py-4"
             [disabled]="!lForm.valid">Sign in</button>
+            
           </form>
           <div class="d-inline-block w-100 text-center mt-4 mb-2">
             <a  class="text-dark font-400 font-18" style="text-decoration: underline;"

@@ -10,6 +10,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { NgbModule,NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgSelectModule } from '@ng-select/ng-select';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
+import {NgxPaginationModule} from 'ngx-pagination';
+import { ForgotPasswordModule } from './forgot-password/forgot-password.module';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import {FormsModule,ReactiveFormsModule} from '@angular/forms';
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxPaginationModule,
+    ForgotPasswordModule,
     ToastrModule.forRoot({
       timeOut: 10000,
       positionClass: 'toast-top-right',

@@ -17,6 +17,8 @@ import { ToastrService } from 'ngx-toastr';
 export class CreateOrderComponent implements OnInit {
   @ViewChild('addAddress') addAddress;
   @ViewChild('payLaterOrderSummary') payLaterOrderSummary;
+  public postoffice:any={};
+  public count:number=0;
   public cartId: any = 0;
   public cartDetails: any = [];
   public totalPrice: any = 0;
@@ -33,9 +35,13 @@ export class CreateOrderComponent implements OnInit {
   public coupon_code_check = 'HPB50';
   public deliveryCharges: any = 0;
   public isCouponApplied : boolean = false;
+  public city: string="";
+  public state: string="";
+  public datastore: any={}
   constructor(private cartService: CartService, private route: ActivatedRoute, private modalService: NgbModal,
     private formBuilder: FormBuilder, private localStorageService: LocalStorageService,
-    private addressService: AddressService, private orderService: OrderService,
+    private addressService: AddressService, 
+    private orderService: OrderService,
     private cookie: CookieService, private router: Router,
     private toastr: ToastrService) {
     if (this.route.snapshot.queryParams.id) {
@@ -90,9 +96,9 @@ export class CreateOrderComponent implements OnInit {
     this.addressForm = this.formBuilder.group({
       name: new FormControl('', [Validators.required]),
       address: new FormControl('', [Validators.required]),
-      city: new FormControl('', [Validators.required]),
       pincode: new FormControl('', [Validators.required]),
-      state: new FormControl('', [Validators.required]),
+      city: new FormControl(''),
+      state: new FormControl(''),
       country: new FormControl('India', [Validators.required]),
     })
   }
@@ -257,4 +263,41 @@ export class CreateOrderComponent implements OnInit {
       this.toastr.error('Invalid coupon code');
     }
   }
+
+  getPin(pin:number){
+    this.datastore=pin;
+    this.orderService.createOrder(this.addressForm.value.pincode).subscribe(res => {
+     this.postoffice=res;
+     if(this.datastore.length==6)
+     {
+        this.postoffice.map((res,index)=>{
+        
+        this.city=res.PostOffice[index].Division;
+        this.state=res.PostOffice[index].State;
+      })
+     
+    }
+    else{
+      this.city='';
+      this.state='';
+    }
+    // this.datastore.map((res,index)=>{
+    // this.city = this.postoffice[0].PostOffice[1].District;
+    // this.state = this.postoffice[0].PostOffice[1].State;
+    // console.log(this.state);
+    // console.log(this.city);
+    });
+
+    // this.cityName=postoffice[0].PostOffice[0].District;
+    // this.stateName=postoffice[0].PostOffice[0].State;
+
+    // this.addressForm.value.city = this.cityName;
+    // this.addressForm.value.state = this.stateName;
+
+    // console.log(postoffice)
+    // console.log(postoffice[0].PostOffice[0].District);
+    // console.log(postoffice[0].PostOffice[0].State);
+    
+
+ }
 }
