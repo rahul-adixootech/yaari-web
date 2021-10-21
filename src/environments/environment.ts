@@ -3,7 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+
+  headerCollectionLength : 5,
+
+   apiUrl : "https://api.halfpricebazar.com/v1/",
+
 };
 
 /*

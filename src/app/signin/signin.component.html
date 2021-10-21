@@ -1,0 +1,50 @@
+<!-- Sign In section -->
+
+<section class="sing_in_sec">
+    <div class="container-fluid">
+      <div class="row mx-0 px-5">
+        <div class="col-lg-6 col-md-10 col-sm-12 mx-auto">
+
+          <form class="custom_form" [formGroup]="signinForm" >
+            <div class="form-row">
+
+              <div class="form-group col-md-12 mb-4">
+                <input type="email" class="form-control" id="inputEmail4" placeholder="Email"
+                name="inputEmail4" formControlName="email" value=""
+                (blur)="validateFormField('email')">
+              </div>
+
+              <div class="form-group col-md-12 mb-4">
+                <input type="password" class="form-control" id="inputPassword4" placeholder="Password"
+              name="inputPassword4" formControlName="password" value="" 
+              (blur)="validateFormField('password')">
+              </div>
+
+              <div class="form-group col-md-12 mb-4 text-center py-1">
+                <a href="javaScript:void(0)" class="text-dark font-500 font-18">
+                  Forgot your password ?
+                </a>
+              </div>
+
+            </div>
+            
+            <button (click)="checkUser()" type="submit" class="btn btn-theme font-18 w-100 py-4"
+            [disabled]="signinForm.invalid">Sign in</button>
+          
+          </form>
+          <div class="d-inline-block w-100 text-center mt-4 mb-2">
+            <a href="javaScript:void(0)" class="text-dark font-400 font-18" style="text-decoration: underline;">
+              Create account
+            </a>
+          </div>
+          <div class="d-inline-block w-100 text-center my-3">
+            <a href="javaScript:void(0)" class="text-dark font-500 font-18">
+              Return to store
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Sign In section End -->
