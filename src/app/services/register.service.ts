@@ -12,7 +12,10 @@ export class RegisterService {
   constructor(private http: HttpClient) { }
 
   registerUser(payload:any){
+    console.log("before payload");
+    console.log(payload);
     return this.http.post(this.apiUrl + "users" , payload).pipe(map(response => { 
+      console.log("hi from register user")
       return response;
     }))
 }

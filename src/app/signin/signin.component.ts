@@ -4,6 +4,8 @@ import { LoginService } from '../services/login.service';
 import { CookieService } from 'ngx-cookie-service';
 import { ToastrService } from 'ngx-toastr';
 import { PreviousRouteService } from '../services/previous-route.service';
+import { Route } from '@angular/compiler/src/core';
+import { Router } from '@angular/router';
 
 @Component({
 
@@ -16,12 +18,14 @@ export class SigninComponent implements OnInit {
   
   public signinForm: FormGroup = new FormGroup({});
   public previousUrl: any = '';
+  public loginResponse: any='';
 
   constructor(private LoginService: LoginService, 
               private Builder: FormBuilder,
               private CookieService: CookieService,
               private toastr: ToastrService,
-              private previousRouteService: PreviousRouteService) { }
+              private previousRouteService: PreviousRouteService,
+              private router: Router) { }
 
   ngOnInit(): void {
 
@@ -42,6 +46,17 @@ export class SigninComponent implements OnInit {
       email: this.signinForm.value.email,
       password: this.signinForm.value.password
     }
+     this.LoginService.loginUser(payload).subscribe(Response =>{
+       console.log(Response)
+       this.loginResponse=Response;
+       if(this.loginResponse['token'])
+       {
+         console.log("hi i am if condition ");
+         this.router.navigate(['/home'])
+       }
+       
+     })
+
     console.log(payload.email);
     console.log(payload.password)
   }

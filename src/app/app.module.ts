@@ -12,7 +12,12 @@ import { FooterModule } from './footer/footer.module';
 import { HomeModule } from './home/home.module';
 import { CookieService } from 'ngx-cookie-service';
 import { ToastrModule } from 'ngx-toastr';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule} from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { ForgotPasswordModule } from './forgot-password/forgot-password.module';
 
 @NgModule({
   declarations: [
@@ -31,6 +36,12 @@ import { MatMenuModule } from '@angular/material/menu';
     FooterModule,
     HomeModule,
     MatMenuModule,
+    MatButtonModule,
+    MatMenuModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatCardModule,
+    ForgotPasswordModule,
    
     ToastrModule.forRoot(), 
   ],

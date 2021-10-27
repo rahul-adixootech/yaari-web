@@ -50,17 +50,19 @@ export class SignupComponent implements OnInit {
       // confirm_password: this.signupForm.value.confirm_password,
       mobile: this.signupForm.value.mobile,
     }
+    console.log("payload working");
+    console.log(payload);
     
-    if (this.signupForm.value.password != this.signupForm.value.confirm_password) {
-      this.toastr.error('Confirm password is incorrect');
-
-    } else {
+     
 
       this.RegisterService.registerUser(payload).subscribe(response => {
-        console.log(response)
+        console.log("the res");
+        console.log(response);
+
         this.toastr.success('User Registered Successfully');
-        this.signupForm.reset();
-        this.router.navigateByUrl("/login");
+        this.router.navigate(['/signin']);
+       // this.signupForm.reset();
+        
 
       }, error => {
 
@@ -71,7 +73,7 @@ export class SignupComponent implements OnInit {
         }
       })
     }
-  }
+  
     validateFormField(type:any) {
     if (type == 'name') {
      

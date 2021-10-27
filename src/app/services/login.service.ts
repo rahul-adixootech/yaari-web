@@ -15,4 +15,23 @@ export class LoginService {
       return response;
     }))
 }
+  mobileCheck(payload:any){
+    return this.http.post(this.apiUrl + 'auth/generate-otp',payload).pipe(map(response =>{
+      return response;
+    }))
+  }
+
+  otpCheck(payload:any){
+    console.log(payload)
+    return this.http.post(this.apiUrl+"auth/login/mobile",payload).pipe(map(response =>{
+      return response;
+    }))
+  }
+  
+  passwordCheck(id:any,payload:any){
+    return this.http.patch(this.apiUrl + 'users/'+id,payload).pipe(map(response =>{
+      return response;
+    }))
+  }
+
 }
